@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.EnumSet;
+
 @RequiredArgsConstructor
 @Controller
 public class PostsApiController {
@@ -22,7 +24,7 @@ public class PostsApiController {
     @PostMapping("/api/v1/posts")
     public ResponseEntity<Long> save(@RequestBody PostsSaveRequestDto requestDto, HttpServletRequest request, HttpServletResponse response) {
         Long result = postsService.save(requestDto);
-        if(result > 0L) {
+        if (result > 0L) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
 
@@ -33,7 +35,7 @@ public class PostsApiController {
     public ResponseEntity<Long> update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         Long result = postsService.update(id, requestDto);
 
-        if(result > 0L) {
+        if (result > 0L) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
 
@@ -43,5 +45,12 @@ public class PostsApiController {
     @GetMapping("/api/v1/posts/{id}")
     public @ResponseBody PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
+    }
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public ResponseEntity<Long> delete(@PathVariable Long id) {
+        postsService.delete(id);
+
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 }
