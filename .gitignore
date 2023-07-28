@@ -1,8 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,intellij+all,eclipse,java,gradle,git
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,intellij+all,eclipse,java,gradle,git
 
-### application.yml
-# src/main/resources/application.yml
+### application-oauth.yml
+application-oauth.yml
 
 ### docker-compose.yml
 docker-compose.yml
